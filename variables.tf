@@ -2,7 +2,7 @@
 variable "env" {
   description = " Deployment Environment"
   type        = string
-  default     = "dev-rosa"
+  default     = "dev-sno"
 }
 
 data "local_file" "ssh_key_pub" {
@@ -80,12 +80,12 @@ variable "ec2_instance_type" {
 variable "ec2_instance_name" {
   description = "Name of EC2 Instance"
   type        = string
-  default     = "deployment_jump_svr"
+  default     = "deployment_svr"
 }
 
 variable "ec2_inbound_network" {
   description = "Source network for connection to EC2 Instance"
   default = [
-    "142.161.182.102/32"
+    "X.X.X.X/32"
   ]
 }

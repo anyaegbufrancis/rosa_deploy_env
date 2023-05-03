@@ -134,7 +134,7 @@ resource "aws_instance" "deployment_svr" {
   }
 
   provisioner "file" {
-   source      = "install/install.sh"
+   source      = "./install/install.sh"
    destination = "/home/ec2-user/install.sh"
  }
 
