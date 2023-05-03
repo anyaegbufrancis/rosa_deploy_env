@@ -111,16 +111,20 @@ resource "aws_security_group" "rosa_vpc_ec2_sg" {
     Name = "${var.env}-${var.ec2_instance_name}-sg"
   }
 }
+resource "random_string" "random" {
+  length           = 10
+  lower          = true
+}
 
 resource "aws_key_pair" "key-pem" {
-  key_name = "key-pem"
+  key_name = random_string.random.result
   public_key = data.local_file.ssh_key_pub.content
 }
 resource "aws_instance" "deployment_svr" {
   ami                         = var.ec2_ami
   instance_type               = var.ec2_instance_type
   associate_public_ip_address = true
-  key_name                    = "key-pem"
+  key_name                    = random_string.random.result
   subnet_id                   = aws_subnet.public_subnets[0].id
   vpc_security_group_ids      = [aws_security_group.rosa_vpc_ec2_sg.id]
   tags = {

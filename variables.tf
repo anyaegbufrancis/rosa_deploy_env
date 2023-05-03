@@ -5,6 +5,7 @@ variable "env" {
   default     = "dev-sno"
 }
 
+
 data "local_file" "ssh_key_pub" {
   filename = pathexpand("~/.ssh/id_rsa.pub")
 }
@@ -59,12 +60,6 @@ variable "priv_subnet_azs" {
   ]
 }
 
-variable "rt_name" {
-  description = "Name for the route table of the webserver vpc"
-  type        = string
-  default     = "web_server"
-}
-
 variable "ec2_ami" {
   description = "AMI of EC2 Instance"
   type        = string
@@ -86,6 +81,6 @@ variable "ec2_instance_name" {
 variable "ec2_inbound_network" {
   description = "Source network for connection to EC2 Instance"
   default = [
-    "X.X.X.X/32"
+    "172.16.255.110/32" ## Replace with the IP address of your connection source
   ]
 }
