@@ -34,17 +34,17 @@ variable "aws_region" {
 
 variable "subnet_block_prefix" {
   description = "AWS VPC CIDR block Prefix"
-  default     = "192.168.255."
+  default     = "192.168.0."
 }
 
 variable "subnet_blocks" {
   description = "Subnet mask for subnets created from VPC CIDR block"
-  default     = "28"
+  default     = "20"
 }
 
 variable "vpc_cidr_mask" {
   description = "VPC CIDR block subnet mask"
-  default     = "24"
+  default     = "16"
 }
 
 variable "priv_subnet_azs" {
